@@ -25,12 +25,6 @@ public:
 
       while (dd > 30)
       {
-        // if (dd == 365)
-        // {
-        //   check = true;
-        //   break;
-        // }
-
         if ((counter == 1) || (counter == 3) || (counter == 5) || (counter == 7) || (counter == 8) || (counter == 10) || (counter == 12))
         {
           dd -= 31;
@@ -59,10 +53,10 @@ public:
         cout << month << " " << day;
       }
     }
-      else
-      {
-        cout << "Invalid number of days. Enter the days between 1 to 365." << endl;
-      }
+    else
+    {
+      cout << "Invalid number of days. Enter the days between 1 to 365." << endl;
+    }
   }
 
   date2019(int dd, int mm)
@@ -136,6 +130,8 @@ public:
       }
     }
   }
+
+
 };
 
 int main()

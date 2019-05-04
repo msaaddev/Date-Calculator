@@ -53,7 +53,6 @@ public:
       else
       {
         day += dd;
-        cout << month << " " << day;
       }
     }
     else
@@ -137,14 +136,15 @@ public:
         {
           day = 31;
           check2 = false;
-          cout << month << " " << day;
+
         }
         else
         {
           day = dd;
-          cout << month << " " << day;
+
         }
       }
+
     }
   }
 
@@ -225,12 +225,10 @@ void date2019::setDate(int dd, int mm)
       {
         day = 31;
         check2 = false;
-        cout << month << " " << day;
       }
       else
       {
         day = dd;
-        cout << month << " " << day;
       }
     }
   }
@@ -253,9 +251,6 @@ void date2019::print()
         break;
       }
     }
-
-    cout << endl
-         << "Day:  " << originalDay << endl;
 
     if (month == 4 || month == 7)
     {
@@ -579,7 +574,6 @@ void date2019::plusDay(int dd)
     else
     {
       day += dd;
-      cout << month << " " << day;
     }
   }
   else
@@ -593,7 +587,7 @@ void date2019::plusDay(int dd)
 int main()
 {
   date2019 d1;
-  d1.plusDay(36);
-  // d1.setDate(32, 1);
+  d1.plusDay(16);
+  d1.setDate(16, 12);
   d1.print();
 }

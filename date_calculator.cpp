@@ -68,9 +68,14 @@ public:
 
       while (dd > 0 && dd > 30)
       {
-
-        cout << "Counter: " << counter << endl;
         if(counter > 12)
+        {
+          cout << "Invalid number of days. Date cannot exceed to next year i.e 2020" << endl;
+          check = false;
+          break;
+        }
+
+        if(month == 12 && dd > 31)
         {
           cout << "Invalid number of days. Date can not exceed to next year i.e 2020" << endl;
           check = false;
@@ -117,10 +122,6 @@ public:
           cout << month << " " << day;
         }
       }
-      // else
-      // {
-      //   cout << "Invalid number of days. Enter the days between 1 to 365." << endl;
-      // }
     }
   }
 
@@ -128,5 +129,5 @@ public:
 
 int main()
 {
-  date2019 d1(32, 12);
+  date2019 d1(31, 12);
 }

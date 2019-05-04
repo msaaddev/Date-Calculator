@@ -131,10 +131,79 @@ public:
     }
   }
 
+  void setDate()
+  {
+
+  }
+
+  void print()
+  {
+    int monthStart, originalDay, daySub;
+    switch(month)
+    {
+      case 1:
+
+        monthStart = 2; //tuesday
+        // 1 = Tuesday
+        daySub = day;
+        while (true)
+        {
+          daySub = daySub - 7;
+          if (daySub < 0)
+          {
+            break;
+          }
+          originalDay = daySub;
+        }
+
+        cout << endl
+             << "Day:  " << originalDay << endl;
+        break;
+
+      case 2:
+      	monthStart = 5; // friday
+
+        // 1 = friday
+        daySub = day;
+        while(true)
+        {
+          daySub = daySub - 7;
+          if(daySub < 0 )
+          {
+            break;
+          }
+          originalDay = daySub;
+        }
+
+        cout << endl << "Day:  "<<  originalDay << endl;
+        break;
+
+      case 3:
+      
+        monthStart = 5; // friday
+
+        // 1 = friday
+        daySub = day;
+        while (true)
+        {
+          daySub = daySub - 7;
+          if (daySub < 0)
+          {
+            break;
+          }
+          originalDay = daySub;
+        }
+
+        cout << endl
+             << "Day:  " << originalDay << endl;
+        break;
+    }
+  }
 
 };
 
 int main()
 {
-  date2019 d1(12);
+  date2019 d1(70);
+  d1.print();
 }

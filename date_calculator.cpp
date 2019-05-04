@@ -45,13 +45,14 @@ public:
       {
         day = dd;
       }
-      cout << month << " " << day;
-    }
-    else
-    {
-      cout << "Invalid number of days. Enter the days between 1 to 365." << endl;
-    }
-}
+        cout << month << " " << day;
+      }
+      else
+      {
+        cout << "Invalid number of days. Enter the days between 1 to 365." << endl;
+      }
+  }
+
 
 };
 

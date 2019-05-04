@@ -19,10 +19,18 @@ public:
     month = 1;
     int counter = 1;
 
-    if(dd <= 365)
+    if(dd < 365)
     {
-      while (dd > 0 && dd > 30)
+      bool check = false;
+
+      while (dd > 30)
       {
+        // if (dd == 365)
+        // {
+        //   check = true;
+        //   break;
+        // }
+
         if ((counter == 1) || (counter == 3) || (counter == 5) || (counter == 7) || (counter == 8) || (counter == 10) || (counter == 12))
         {
           dd -= 31;
@@ -41,12 +49,16 @@ public:
         counter++;
       }
 
-      if (dd <= 30)
+      if(dd >= 365)
       {
-        day = dd;
+        cout << "Invalid number of days. Enter the days between 1 to 365." << endl;
       }
+      else
+      {
+        day += dd;
         cout << month << " " << day;
       }
+    }
       else
       {
         cout << "Invalid number of days. Enter the days between 1 to 365." << endl;
@@ -124,10 +136,9 @@ public:
       }
     }
   }
-
 };
 
 int main()
 {
-  date2019 d1(31, 12);
+  date2019 d1(12);
 }

@@ -135,8 +135,16 @@ public:
         }
         else
         {
-          day = dd;
-          cout << month << " " << day;
+          if(dd == 0)
+          {
+            day = 1;
+            cout << month << "   " << day;
+          }
+          else
+          {
+            day = dd;
+            cout << month << " " << day;
+          }
         }
       }
     }
@@ -217,8 +225,16 @@ void date2019:: setDate(int dd, int mm)
         }
         else
         {
-          day = dd;
-          cout << month << " " << day;
+          if (dd == 0)
+          {
+            day = 1;
+            cout << month << "   " << day;
+          }
+          else
+          {
+            day = dd;
+            cout << month << " " << day;
+          }
         }
       }
     }
@@ -275,7 +291,16 @@ void date2019:: print()
       {
         dayOfWeek = "Sunday";
       }
-      cout << "Day of Week: " << dayOfWeek << endl;
+      if (month == 4)
+      {
+        cout << endl
+             << dayOfWeek << ", April " << day << ", 2019" << endl;
+      }
+      else
+      {
+        cout << endl
+             << dayOfWeek << ", July " << day << ", 2019" << endl;
+      }
     }
 
     else if (month == 1 || month == 10)
@@ -308,7 +333,17 @@ void date2019:: print()
       {
         dayOfWeek = "Monday";
       }
-      cout << "Day of Week: " << dayOfWeek << endl;
+
+      if (month == 1)
+      {
+        cout << endl
+             << dayOfWeek << ", January " << day << ", 2019" << endl;
+      }
+      else
+      {
+        cout << endl
+             << dayOfWeek << ", October " << day << ", 2019" << endl;
+      }
     }
     else if (month == 5)
     {
@@ -340,7 +375,8 @@ void date2019:: print()
       {
         dayOfWeek = "Tuesday";
       }
-      cout << "Day of Week: " << dayOfWeek << endl;
+
+        cout << endl << dayOfWeek << ", May " << day << ", 2019" << endl;
     }
     else if (month == 8)
     {
@@ -373,7 +409,9 @@ void date2019:: print()
         dayOfWeek = "Wednesday";
       }
 
-      cout << "Day of Week: " << dayOfWeek << endl;
+
+      cout << endl << dayOfWeek << ", August " << day << ", 2019" << endl;
+
     }
     else if (month == 2 || month == 3 || month == 11)
     {
@@ -406,7 +444,21 @@ void date2019:: print()
         dayOfWeek = "Thursday";
       }
 
-      cout << "Day of Week: " << dayOfWeek << endl;
+      if (month == 2)
+      {
+        cout << endl
+             << dayOfWeek << ", February " << day << ", 2019" << endl;
+      }
+      else if (month == 3)
+      {
+        cout << endl
+             << dayOfWeek << ", March " << day << ", 2019" << endl;
+      }
+      else
+      {
+        cout << endl
+             << dayOfWeek << ", November " << day << ", 2019" << endl;
+      }
     }
     else if (month == 6)
     {
@@ -439,7 +491,8 @@ void date2019:: print()
         dayOfWeek = "Friday";
       }
 
-      cout << "Day of Week: " << dayOfWeek << endl;
+        cout << endl
+             << dayOfWeek << ", June " << day << ", 2019" << endl;
     }
     else
     {
@@ -472,7 +525,14 @@ void date2019:: print()
         dayOfWeek = "Saturday";
       }
 
-      cout << "Day of Week: " << dayOfWeek << endl;
+      if(month == 9)
+      {
+        cout << endl << dayOfWeek << ", September " << day << ", 2019" <<  endl;
+      }
+      else
+      {
+        cout << endl << dayOfWeek << ", December " << day << ", 2019" <<  endl;
+      }
     }
   }
   else
@@ -480,12 +540,11 @@ void date2019:: print()
     cout << endl << "A date not in 2019." << endl;
   }
 
-
 }
 
 int main()
 {
   date2019 d1;
-  d1.setDate(25, 4);
+  d1.setDate(32, 10);
   d1.print();
 }

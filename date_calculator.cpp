@@ -197,8 +197,16 @@ void date2019:: setDate(int dd, int mm)
 
         if ((counter == 1) || (counter == 3) || (counter == 5) || (counter == 7) || (counter == 8) || (counter == 10) || (counter == 12))
         {
+          if(dd == 31)
+          {
+            break;
+          }
+          else
+          {
             dd -= 31;
             month++;
+          }
+
         }
         else if (counter == 2)
         {
@@ -225,20 +233,13 @@ void date2019:: setDate(int dd, int mm)
         }
         else
         {
-          if (dd == 0)
-          {
-            day = 1;
-            cout << month << "   " << day;
-          }
-          else
-          {
             day = dd;
             cout << month << " " << day;
-          }
         }
       }
     }
 }
+
 
 void date2019:: print()
 {
@@ -545,6 +546,6 @@ void date2019:: print()
 int main()
 {
   date2019 d1;
-  d1.setDate(32, 10);
+  d1.setDate(32, 1);
   d1.print();
 }

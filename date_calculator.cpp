@@ -5,7 +5,7 @@ using namespace std;
 class date2019
 {
 private:
-  int day, month;
+  int day, month, var, mon;
 
 public:
   date2019()
@@ -16,6 +16,7 @@ public:
 
   date2019(int dd)
   {
+    var = dd - 1;
     day = 1;
     month = 1;
     int counter = 1;
@@ -28,6 +29,8 @@ public:
       {
         if ((counter == 1) || (counter == 3) || (counter == 5) || (counter == 7) || (counter == 8) || (counter == 10) || (counter == 12))
         {
+          if (dd == 31)
+            break;
           dd -= 31;
           month++;
         }
@@ -44,6 +47,8 @@ public:
         counter++;
       }
 
+      mon = month;
+
       if (dd >= 365)
       {
         cout << "Invalid number of days. Enter the days between 1 to 365." << endl;
@@ -52,7 +57,7 @@ public:
       }
       else
       {
-        day += dd;
+        day = dd;
       }
     }
     else
@@ -65,7 +70,7 @@ public:
 
   date2019(int dd, int mm)
   {
-
+    var = dd;
     if (mm > 12 || dd > 365)
     {
       cout << "Invalid month or date. Try Again." << endl;
@@ -101,6 +106,7 @@ public:
         if (month == 12 && dd == 31)
         {
           check2 = true;
+          mon = month;
           break;
         }
 
@@ -130,22 +136,31 @@ public:
         counter++;
       }
 
+      mon = month;
+
       if (check)
       {
         if (check2)
         {
           day = 31;
           check2 = false;
-
         }
         else
         {
           day = dd;
-
         }
       }
-
     }
+
+    int x = 0, sum = 0, totalDays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    ;
+    while (x < mon)
+    {
+      sum = sum + totalDays[x];
+      x++;
+    }
+    var = sum -
+          totalDays[mon - 1] + day - 1;
   }
 
   void setDate(int, int);
@@ -155,6 +170,7 @@ public:
 
 void date2019::setDate(int dd, int mm)
 {
+  var = dd;
   if (mm > 12 || dd > 365)
   {
     cout << "Invalid month or date. Try Again." << endl;
@@ -190,6 +206,7 @@ void date2019::setDate(int dd, int mm)
       if (month == 12 && dd == 31)
       {
         check2 = true;
+        mon = month;
         break;
       }
 
@@ -219,6 +236,8 @@ void date2019::setDate(int dd, int mm)
       counter++;
     }
 
+    mon = month;
+
     if (check)
     {
       if (check2)
@@ -232,301 +251,30 @@ void date2019::setDate(int dd, int mm)
       }
     }
   }
+
+  int x = 0, sum = 0, totalDays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  ;
+  while (x < mon)
+  {
+    sum = sum + totalDays[x];
+    x++;
+  }
+  var = sum -
+        totalDays[mon - 1] + day - 1;
 }
 
 void date2019::print()
 {
   if (day != -1 && month != -1)
   {
-    int monthStart, originalDay, daySub;
-    string dayOfWeek;
+    int originalDay;
+    originalDay = (var + 1) % 7;
 
-    daySub = day;
-    while (true)
-    {
-      originalDay = daySub;
-      daySub = daySub - 7;
-      if (daySub < 0)
-      {
-        break;
-      }
-    }
+    string dayOfWeek[7] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    string monthOfYear[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
-    if (month == 4 || month == 7)
-    {
-      if (originalDay == 1)
-      {
-        dayOfWeek = "Monday";
-      }
-      else if (originalDay == 2)
-      {
-        dayOfWeek = "Tuesday";
-      }
-      else if (originalDay == 3)
-      {
-        dayOfWeek = "Wednesday";
-      }
-      else if (originalDay == 4)
-      {
-        dayOfWeek = "Thursday";
-      }
-      else if (originalDay == 5)
-      {
-        dayOfWeek = "Friday";
-      }
-      else if (originalDay == 6)
-      {
-        dayOfWeek = "Saturday";
-      }
-      else if (originalDay == 0)
-      {
-        dayOfWeek = "Sunday";
-      }
-      if (month == 4)
-      {
-        cout << endl
-             << dayOfWeek << ", April " << day << ", 2019" << endl;
-      }
-      else
-      {
-        cout << endl
-             << dayOfWeek << ", July " << day << ", 2019" << endl;
-      }
-    }
-
-    else if (month == 1 || month == 10)
-    {
-      if (originalDay == 1)
-      {
-        dayOfWeek = "Tuesday";
-      }
-      else if (originalDay == 2)
-      {
-        dayOfWeek = "Wednesday";
-      }
-      else if (originalDay == 3)
-      {
-        dayOfWeek = "Thursday";
-      }
-      else if (originalDay == 4)
-      {
-        dayOfWeek = "Friday";
-      }
-      else if (originalDay == 5)
-      {
-        dayOfWeek = "Saturday";
-      }
-      else if (originalDay == 6)
-      {
-        dayOfWeek = "Sunday";
-      }
-      else if (originalDay == 0)
-      {
-        dayOfWeek = "Monday";
-      }
-
-      if (month == 1)
-      {
-        cout << endl
-             << dayOfWeek << ", January " << day << ", 2019" << endl;
-      }
-      else
-      {
-        cout << endl
-             << dayOfWeek << ", October " << day << ", 2019" << endl;
-      }
-    }
-    else if (month == 5)
-    {
-      if (originalDay == 1)
-      {
-        dayOfWeek = "Wednesday";
-      }
-      else if (originalDay == 2)
-      {
-        dayOfWeek = "Thursday";
-      }
-      else if (originalDay == 3)
-      {
-        dayOfWeek = "Friday";
-      }
-      else if (originalDay == 4)
-      {
-        dayOfWeek = "Saturday";
-      }
-      else if (originalDay == 5)
-      {
-        dayOfWeek = "Sunday";
-      }
-      else if (originalDay == 6)
-      {
-        dayOfWeek = "Monday";
-      }
-      else if (originalDay == 0)
-      {
-        dayOfWeek = "Tuesday";
-      }
-
-      cout << endl
-           << dayOfWeek << ", May " << day << ", 2019" << endl;
-    }
-    else if (month == 8)
-    {
-      if (originalDay == 1)
-      {
-        dayOfWeek = "Thursday";
-      }
-      else if (originalDay == 2)
-      {
-        dayOfWeek = "Friday";
-      }
-      else if (originalDay == 3)
-      {
-        dayOfWeek = "Saturday";
-      }
-      else if (originalDay == 4)
-      {
-        dayOfWeek = "Sunday";
-      }
-      else if (originalDay == 5)
-      {
-        dayOfWeek = "Monday";
-      }
-      else if (originalDay == 6)
-      {
-        dayOfWeek = "Tuesday";
-      }
-      else if (originalDay == 0)
-      {
-        dayOfWeek = "Wednesday";
-      }
-
-      cout << endl
-           << dayOfWeek << ", August " << day << ", 2019" << endl;
-    }
-    else if (month == 2 || month == 3 || month == 11)
-    {
-      if (originalDay == 1)
-      {
-        dayOfWeek = "Friday";
-      }
-      else if (originalDay == 2)
-      {
-        dayOfWeek = "Saturday";
-      }
-      else if (originalDay == 3)
-      {
-        dayOfWeek = "Sunday";
-      }
-      else if (originalDay == 4)
-      {
-        dayOfWeek = "Monday";
-      }
-      else if (originalDay == 5)
-      {
-        dayOfWeek = "Tuesday";
-      }
-      else if (originalDay == 6)
-      {
-        dayOfWeek = "Wednesday";
-      }
-      else if (originalDay == 0)
-      {
-        dayOfWeek = "Thursday";
-      }
-
-      if (month == 2)
-      {
-        cout << endl
-             << dayOfWeek << ", February " << day << ", 2019" << endl;
-      }
-      else if (month == 3)
-      {
-        cout << endl
-             << dayOfWeek << ", March " << day << ", 2019" << endl;
-      }
-      else
-      {
-        cout << endl
-             << dayOfWeek << ", November " << day << ", 2019" << endl;
-      }
-    }
-    else if (month == 6)
-    {
-      if (originalDay == 1)
-      {
-        dayOfWeek = "Saturday";
-      }
-      else if (originalDay == 2)
-      {
-        dayOfWeek = "Sunday";
-      }
-      else if (originalDay == 3)
-      {
-        dayOfWeek = "Monday";
-      }
-      else if (originalDay == 4)
-      {
-        dayOfWeek = "Tuesday";
-      }
-      else if (originalDay == 5)
-      {
-        dayOfWeek = "Wednesday";
-      }
-      else if (originalDay == 6)
-      {
-        dayOfWeek = "Thursday";
-      }
-      else if (originalDay == 0)
-      {
-        dayOfWeek = "Friday";
-      }
-
-      cout << endl
-           << dayOfWeek << ", June " << day << ", 2019" << endl;
-    }
-    else
-    {
-      if (originalDay == 1)
-      {
-        dayOfWeek = "Sunday";
-      }
-      else if (originalDay == 2)
-      {
-        dayOfWeek = "Monday";
-      }
-      else if (originalDay == 3)
-      {
-        dayOfWeek = "Tuesday";
-      }
-      else if (originalDay == 4)
-      {
-        dayOfWeek = "Wednesday";
-      }
-      else if (originalDay == 5)
-      {
-        dayOfWeek = "Thursday";
-      }
-      else if (originalDay == 6)
-      {
-        dayOfWeek = "Friday";
-      }
-      else if (originalDay == 0)
-      {
-        dayOfWeek = "Saturday";
-      }
-
-      if (month == 9)
-      {
-        cout << endl
-             << dayOfWeek << ", September " << day << ", 2019" << endl;
-      }
-      else
-      {
-        cout << endl
-             << dayOfWeek << ", December " << day << ", 2019" << endl;
-      }
-    }
+    cout << endl
+         << dayOfWeek[originalDay] << ", " << monthOfYear[mon - 1] << " " << day << ", 2019" << endl;
   }
   else
   {
@@ -586,8 +334,9 @@ void date2019::plusDay(int dd)
 
 int main()
 {
+
   date2019 d1;
-  d1.plusDay(16);
+  // d1.plusDay(16);
   d1.setDate(16, 12);
   d1.print();
 }
